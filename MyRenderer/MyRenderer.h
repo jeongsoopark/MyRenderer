@@ -1,5 +1,8 @@
 #pragma once
 
+#include <windows.h>
+#include <fcntl.h>
+#include <io.h>
 #include <string>
 #include <d3d12.h>
 #include <dxgi1_4.h>
@@ -20,9 +23,14 @@ public:
 	virtual void onDestroy();
 
 private:
-
-	//FIXME : should viewport/windows size be in RenderBase class?
+	std::string getWindowTitle();
 	//std::string mWindowTitle;
+
+	std::string mWindowsTitle;
+	bool viewUpdated = false;
+	UINT destWidth;
+	UINT destHeight;
+	//FIXME : should viewport/windows size be in RenderBase class?
 	UINT mViewportWidth;
 	UINT mViewportHeight;
 	float mAspectRatio;
